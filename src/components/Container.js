@@ -4,6 +4,8 @@ import Sticky from 'react-sticky-el';
 import Slide from './Slide';
 import Header from "./Header";
 import navItems, {headerStyles} from '../constants';
+import Hero from './Hero';
+import content from '../content';
 
 const MainView = styled.div`
         height: 100%;
@@ -75,11 +77,11 @@ class Container extends React.Component {
                             shrink={shrink}
                     />
                 </Sticky>
-                <Slide ref={(ref) => this.intro = ref} name="intro" height="473" color="white">intro</Slide>
+                <Slide ref={(ref) => this.intro = ref} name="intro" height="473" color="white"><Hero title={content[0].title} body={content[0].body}/></Slide>
                 <Slide ref={(ref) => this.overview = ref} name="overview" height="473" color="white">overview</Slide>
                 <Slide ref={(ref) => this.resources = ref} name="resources" height="473" color="white">{}resources</Slide>
                 <Slide ref={(ref) => this.roadmap = ref} name="roadmap" height="473" color="white">roadmap</Slide>
-                <Slide ref={(ref) => this.community = ref} name="community" height="473" color="white">community</Slide>
+                <Slide ref={(ref) => this.community = ref} name="community" height="473" color="white"><Hero title={content[1].title} body={content[1].body}/></Slide>
                 <Slide ref={(ref) => this.faq = ref} name="faq" height="473" color="white" style={{height: "473px", width: "100%"}}>faq</Slide>
             </MainView>
         );
