@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Sticky from 'react-sticky-el';
 import Slide from './Slide';
 import Header from "./Header";
-import navItems from '../constants';
+import navItems, {headerStyles} from '../constants';
 
 const MainView = styled.div`
         height: 100%;
@@ -16,9 +16,9 @@ class Container extends React.Component {
         super(props);
         this.state = {
             activeItem: '',
-            scrollStatus: ''
-        }
-        ;
+            scrollStatus: '',
+            shrink: false
+        };
         this._timeout = null;
     }
 
@@ -38,6 +38,7 @@ class Container extends React.Component {
 
     handleScroll = (event) => {
         event.preventDefault();
+        const closestRef = this.getClosestInViewRef().name;
         if(this._timeout){
             clearTimeout(this._timeout);
         }
@@ -45,9 +46,10 @@ class Container extends React.Component {
             this._timeout = null;
             this.setState({
                 scrollStatus:'stopped',
-                activeItem: this.getClosestInViewRef().name
+                activeItem: closestRef,
+                shrink: closestRef !== 'intro'
             });
-        },1000);
+        },500);
         if(this.state.scrollStatus !== 'scrolling') {
             this.setState({
                 scrollStatus:'scrolling'
@@ -56,14 +58,12 @@ class Container extends React.Component {
     };
 
     setActiveItem = (activeItem) => {
-        this.setState({
-            activeItem
-        });
+        //scrolling the ref triggers the onScroll event which adds the selected item into state
         this[activeItem].scrollIntoView({block: 'end', behavior: 'smooth'});
     };
 
     render() {
-        const {activeItem} = this.state;
+        const {activeItem, shrink} = this.state;
         return (
             <MainView id="main" className="main" onScroll={this.handleScroll} ref={(ref) => this.main = ref}>
                 <Sticky scrollElement=".main">
@@ -71,6 +71,8 @@ class Container extends React.Component {
                             name="header"
                             activeItem={activeItem}
                             setActiveItem={this.setActiveItem}
+                            headerStyles={headerStyles}
+                            shrink={shrink}
                     />
                 </Sticky>
                 <Slide ref={(ref) => this.intro = ref} name="intro" height="473" color="white">intro</Slide>

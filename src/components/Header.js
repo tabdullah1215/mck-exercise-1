@@ -2,31 +2,45 @@ import React from 'react';
 import NavBar from './NavBar';
 import styled from 'styled-components';
 
-const Header = React.forwardRef(({activeItem, setActiveItem}, ref) => {
-    const Title = styled.img`
-        width: 140px;
-        height: 44px;
-        margin-top: 10px;
-        margin-left: 20px;
-        margin-right: 40px;
-    `;
-    const MainView = styled.div`
+import {animated} from 'react-spring';
+import {Spring} from 'react-spring/renderprops';
+
+const Header = React.forwardRef(({activeItem, setActiveItem, headerStyles, shrink}, ref) => {
+
+    const { paddingTop, height, navPadding, picHeight, picWidth, shadowColor} = shrink ? headerStyles.shrunk : headerStyles.initial;
+
+    const Title = styled.div`
         display: flex;
         flex-direction: row;
-        padding-top: 1em;
+        justify-content: center;
+        width: 15%;
+        margin-top: 12px;
+        margin-left: 30px;
+    `;
+    const Image = styled(animated.img)``;
+    const MainView = styled(animated.div)`
+        display: flex;
+        flex-direction: row;
         margin-bottom: 20px;
-        height: 91px;
         width: 100%;
         background-color: transparent;
-        box-shadow: 0px 10px 5px lightgrey;
+        box-shadow: 0px 10px 5px ${shadowColor};
     `;
 
     return (
-        <MainView ref={ref} >
-            <Title src="McK_ScriptMark_RGB_McKDeepBlue.png" alt="McKinsey & Company"/>
-            <NavBar activeItem={activeItem} setActiveItem={setActiveItem}/>
-        </MainView>
-    )
+        <Spring
+            from={{...headerStyles.initial}}
+            to={{ paddingTop, height, navPadding, picHeight, picWidth }}>
+            {props =>
+                <MainView style={{paddingTop: props.paddingTop, height: props.height}} ref={ref}>
+                    <Title>
+                        <Image style={{width: props.picWidth, height: props.picHeight}} src="McK_ScriptMark_RGB_McKDeepBlue.png" alt="McKinsey & Company"/>
+                    </Title>
+                    <NavBar activeItem={activeItem} setActiveItem={setActiveItem} paddingTop={props.navPadding}/>
+                </MainView>
+            }
+        </Spring>
+    );
 });
 
 export default Header;
