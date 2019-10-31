@@ -6,6 +6,7 @@ import Header from "./Header";
 import navItems, {headerStyles} from '../constants';
 import Hero from './Hero';
 import content from '../content';
+import Grid from './Grid';
 
 const MainView = styled.div`
         height: 100%;
@@ -78,7 +79,7 @@ class Container extends React.Component {
                     />
                 </Sticky>
                 <Slide ref={(ref) => this.intro = ref} name="intro" height="473" color="white"><Hero title={content[0].title} body={content[0].body}/></Slide>
-                <Slide ref={(ref) => this.overview = ref} name="overview" height="473" color="white">overview</Slide>
+                <Slide ref={(ref) => this.overview = ref} name="overview" height="473" color="white"><Grid content={[content[2], content[3]]} /></Slide>
                 <Slide ref={(ref) => this.resources = ref} name="resources" height="473" color="white">{}resources</Slide>
                 <Slide ref={(ref) => this.roadmap = ref} name="roadmap" height="473" color="white">roadmap</Slide>
                 <Slide ref={(ref) => this.community = ref} name="community" height="473" color="white"><Hero title={content[1].title} body={content[1].body}/></Slide>
