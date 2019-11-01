@@ -30,9 +30,10 @@ const NavBar = ({activeItem, setActiveItem, paddingTop}) => {
     return(
         <MainNav>
             {
-                navItems.filter(item => item.name !== 'intro').map(item => {
+                navItems.filter(item => item.name !== 'intro').map((item, i) => {
                     let activeState = activeItem === item.name;
                     return <NavItem
+                        key={i}
                         style={{color: activeState ? '#1F40E6' : '#000000'}}
                         href={`#${item.name}`}
                         onClick={() => setTimeout(() => setActiveItem(item.name), 500)}>

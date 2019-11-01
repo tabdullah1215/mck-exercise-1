@@ -7,7 +7,7 @@ const Slide = React.forwardRef(({height, color, name, ...props}, ref) => {
         height: ${height}px;
         width: 100%;
         background-color: ${color};
-        overflow: hidden;
+        overflow: hidden;       
     `;
 
     return(

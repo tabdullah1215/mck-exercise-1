@@ -51,11 +51,6 @@ const Cell = (props) => {
         height: 1em;  
     `;
 
-    const background = {
-        height: "100%",
-        backgroundImage: 'url(TopBanner-illustration@2x.png)'
-    };
-
     return(
         <MainView isTileMode={props.isTileMode} inverted={props.inverted}>
             <Title isTileMode={props.isTileMode} inverted={props.inverted}>{props.title}</Title>
@@ -67,17 +62,17 @@ const Cell = (props) => {
             }
             </Body>
             <Links isTileMode={props.isTileMode} inverted={props.inverted}>
-            {
-                props.links.map((lk, i) => {
-                    return (
+                {
+                    props.links.map((lk, i) => {
+                        return (
                             <Paragraph key={i}>
                                 <Anchor inverted={props.inverted} href="#">{`${lk}  `}&nbsp;
                                     <Image src="RightArrow-ElectricBlue.svg"/>
                                 </Anchor>
                             </Paragraph>
-                    )
-                })
-            }
+                        )
+                    })
+                }
             </Links>
         </MainView>
     )

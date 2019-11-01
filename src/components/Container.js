@@ -7,6 +7,7 @@ import navItems, {headerStyles} from '../constants';
 import Hero from './Hero';
 import content from '../content';
 import Grid from './Grid';
+import TileBoard from "./TileBoard";
 
 const MainView = styled.div`
         height: 100%;
@@ -25,13 +26,16 @@ class Container extends React.Component {
         this._timeout = null;
     }
 
+    componentWillUnmount(){
+        clearTimeout(this._timeout);
+    }
+
     getClosestInViewRef = () => {
         let headerHeight = this.header && this.header.getBoundingClientRect().height;
         let mainHeight = this.main && this.main.getBoundingClientRect().height;
         return navItems.reduce((acc, item) => {
             let itemTop = this[item.name] && this[item.name].getBoundingClientRect().top;
-            if(itemTop > headerHeight + 5 &&
-                itemTop < mainHeight &&
+            if(itemTop > headerHeight - 20 &&
                 itemTop < acc.posY) {
                 return {name: item.name, posY: itemTop};
             }
@@ -79,11 +83,11 @@ class Container extends React.Component {
                     />
                 </Sticky>
                 <Slide ref={(ref) => this.intro = ref} name="intro" height="473" color="white"><Hero title={content[0].title} body={content[0].body}/></Slide>
-                <Slide ref={(ref) => this.overview = ref} name="overview" height="473" color="white"><Grid content={[content[2], content[3]]} /></Slide>
-                <Slide ref={(ref) => this.resources = ref} name="resources" height="473" color="white">{}resources</Slide>
-                <Slide ref={(ref) => this.roadmap = ref} name="roadmap" height="473" color="white">roadmap</Slide>
-                <Slide ref={(ref) => this.community = ref} name="community" height="473" color="white"><Hero title={content[1].title} body={content[1].body}/></Slide>
-                <Slide ref={(ref) => this.faq = ref} name="faq" height="473" color="white" style={{height: "473px", width: "100%"}}>faq</Slide>
+                <Slide ref={(ref) => this.overview = ref} name="overview" height="520" color="white"><Grid content={[content[2], content[3]]} /></Slide>
+                <Slide ref={(ref) => this.resources = ref} name="resources" height="510" color="white"><TileBoard content={content[4].tileBoard}/></Slide>
+                <Slide ref={(ref) => this.roadmap = ref} name="roadmap" height="520" color="white">roadmap</Slide>
+                <Slide ref={(ref) => this.community = ref} name="community" height="520" color="white"><Hero title={content[1].title} body={content[1].body}/></Slide>
+                <Slide ref={(ref) => this.faq = ref} name="faq" height="473" color="white">faq</Slide>
             </MainView>
         );
     }

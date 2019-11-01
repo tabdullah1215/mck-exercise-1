@@ -9,7 +9,7 @@ const Header = React.forwardRef(({activeItem, setActiveItem, headerStyles, shrin
 
     const { paddingTop, height, navPadding, picHeight, picWidth, shadowColor} = shrink ? headerStyles.shrunk : headerStyles.initial;
 
-    const Title = styled.div`
+    const LogoContainer = styled.div`
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -23,7 +23,7 @@ const Header = React.forwardRef(({activeItem, setActiveItem, headerStyles, shrin
         flex-direction: row;
         margin-bottom: 20px;
         width: 100%;
-        background-color: transparent;
+        background-color: #ffffff;
         box-shadow: 0px 10px 5px ${shadowColor};
     `;
 
@@ -33,9 +33,9 @@ const Header = React.forwardRef(({activeItem, setActiveItem, headerStyles, shrin
             to={{ paddingTop, height, navPadding, picHeight, picWidth }}>
             {props =>
                 <MainView style={{paddingTop: props.paddingTop, height: props.height}} ref={ref}>
-                    <Title>
+                    <LogoContainer>
                         <Image style={{width: props.picWidth, height: props.picHeight}} src="McK_ScriptMark_RGB_McKDeepBlue.png" alt="McKinsey & Company"/>
-                    </Title>
+                    </LogoContainer>
                     <NavBar activeItem={activeItem} setActiveItem={setActiveItem} paddingTop={props.navPadding}/>
                 </MainView>
             }
