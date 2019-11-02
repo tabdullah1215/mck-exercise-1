@@ -8,6 +8,7 @@ import Hero from './Hero';
 import content from '../content';
 import Grid from './Grid';
 import TileBoard from "./TileBoard";
+import ImageView from "./ImageView";
 
 const MainView = styled.div`
         height: 100%;
@@ -15,7 +16,7 @@ const MainView = styled.div`
         overflow: auto;
     `;
 
-class Container extends React.Component {
+class SlideViewer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -85,7 +86,7 @@ class Container extends React.Component {
                 <Slide ref={(ref) => this.intro = ref} name="intro" height="473" color="white"><Hero title={content[0].title} body={content[0].body}/></Slide>
                 <Slide ref={(ref) => this.overview = ref} name="overview" height="520" color="white"><Grid content={[content[2], content[3]]} /></Slide>
                 <Slide ref={(ref) => this.resources = ref} name="resources" height="510" color="white"><TileBoard content={content[4].tileBoard}/></Slide>
-                <Slide ref={(ref) => this.roadmap = ref} name="roadmap" height="520" color="white">roadmap</Slide>
+                <Slide ref={(ref) => this.roadmap = ref} name="roadmap" height="520" color="white"><ImageView content={content[5]}/></Slide>
                 <Slide ref={(ref) => this.community = ref} name="community" height="520" color="white"><Hero title={content[1].title} body={content[1].body}/></Slide>
                 <Slide ref={(ref) => this.faq = ref} name="faq" height="473" color="white">faq</Slide>
             </MainView>
@@ -93,4 +94,4 @@ class Container extends React.Component {
     }
 }
 
-export default Container;
+export default SlideViewer;
