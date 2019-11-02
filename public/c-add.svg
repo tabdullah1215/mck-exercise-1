@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>c-add</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Landing" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="square">
+        <g id="Landing_003" transform="translate(-260.000000, -2682.000000)" stroke="#1F40E6">
+            <g id="FAQ" transform="translate(228.000000, 2604.000000)">
+                <g id="Question-#1" transform="translate(0.000000, 46.000000)">
+                    <g id="c-add" transform="translate(32.000000, 32.000000)">
+                        <path d="M18,9.87096774 L18,26.1290323" id="Path"></path>
+                        <path d="M26.1290323,18 L9.87096774,18" id="Path"></path>
+                        <circle id="Oval" cx="18" cy="18" r="17.4193548"></circle>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

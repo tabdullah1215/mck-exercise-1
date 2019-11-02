@@ -142,6 +142,25 @@ const content = [
                 info: 'Roadmap-Desktop.png'
         }
     },
+    {
+        faqs: {
+            component: 'Faqs',
+            content: [
+                {
+                    question: `Where do I get help applying the new Visual identity styles?`,
+                    answer: `The styles are quite new and we're developing guidelines as we speak. There is early guidance
+            available on the Sketch Kit, however, we are asking teams to share their explorations on the Slack
+            channel so the new DDLS team might help guide them.`
+                },
+                {
+                    question: `How should I apply the partnership mark?`,
+                    answer: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi 
+                ut aliquip ex ea commodo consequat.`
+                }
+            ]
+        }
+    }
 ];
 
 export default content;

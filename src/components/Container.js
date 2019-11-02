@@ -9,6 +9,7 @@ import content from '../content';
 import Grid from './Grid';
 import TileBoard from "./TileBoard";
 import ImageView from "./ImageView";
+import FaqList from './FaqList';
 
 const MainView = styled.div`
         height: 100%;
@@ -88,7 +89,7 @@ class SlideViewer extends React.Component {
                 <Slide ref={(ref) => this.resources = ref} name="resources" height="510" color="white"><TileBoard content={content[4].tileBoard}/></Slide>
                 <Slide ref={(ref) => this.roadmap = ref} name="roadmap" height="520" color="white"><ImageView content={content[5]}/></Slide>
                 <Slide ref={(ref) => this.community = ref} name="community" height="520" color="white"><Hero title={content[1].title} body={content[1].body}/></Slide>
-                <Slide ref={(ref) => this.faq = ref} name="faq" height="473" color="white">faq</Slide>
+                <Slide ref={(ref) => this.faq = ref} name="faq" height="473" color="white"><FaqList content ={content[6]}/></Slide>
             </MainView>
         );
     }

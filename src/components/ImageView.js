@@ -32,8 +32,6 @@ const ImageView = memo((props) => {
     `;
 
     const {info, title} = props.content.roadmap;
-    console.log('content', props.content);
-    console.log(info, title);
     return (
       <MainView>
           <ImageContainer>
