@@ -29,13 +29,13 @@ const Hero = (props) => {
     const Paragraph = styled.p`
         padding-right: 50px;
     `;
-
+    const {title, body} = props.contentMap.content;
     return(
         <MainView>
-            <Title>{props.title}</Title>
+            <Title>{title}</Title>
             <Body>
             {
-                props.body.map((b, i) => {
+                body.map((b, i) => {
                     return (
                         <Paragraph key={i}>{b}</Paragraph>
                     )

@@ -31,14 +31,15 @@ const ImageView = memo((props) => {
         margin-top: 30px;
     `;
 
-    const {info, title} = props.content.roadmap;
+    const {content} = props.contentMap;
+    const {info, title} = content;
     return (
-      <MainView>
-          <ImageContainer>
-              <Title heading={title.heading} subheading={title.subheading} inverted={true}/>
-              <Image src={info}/>
-          </ImageContainer>
-      </MainView>
+        <MainView>
+            <ImageContainer>
+                <Title heading={title.heading} subheading={title.subheading} inverted={true}/>
+                <Image src={info}/>
+            </ImageContainer>
+        </MainView>
     );
 }, () => true);
 

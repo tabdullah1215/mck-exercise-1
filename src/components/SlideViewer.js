@@ -4,12 +4,7 @@ import Sticky from 'react-sticky-el';
 import Slide from './Slide';
 import Header from "./Header";
 import navItems, {headerStyles} from '../constants';
-import Hero from './Hero';
-import content from '../content';
-import Grid from './Grid';
-import TileBoard from "./TileBoard";
-import ImageView from "./ImageView";
-import FaqList from './FaqList';
+import DynamicSlide from './DynamicSlide';
 
 const MainView = styled.div`
         height: 100%;
@@ -73,6 +68,7 @@ class SlideViewer extends React.Component {
 
     render() {
         const {activeItem, shrink} = this.state;
+        const {contentMap} = this.props;
         return (
             <MainView id="main" className="main" onScroll={this.handleScroll} ref={(ref) => this.main = ref}>
                 <Sticky scrollElement=".main">
@@ -84,12 +80,14 @@ class SlideViewer extends React.Component {
                             shrink={shrink}
                     />
                 </Sticky>
-                <Slide ref={(ref) => this.intro = ref} name="intro" height="473" color="white"><Hero title={content[0].title} body={content[0].body}/></Slide>
-                <Slide ref={(ref) => this.overview = ref} name="overview" height="520" color="white"><Grid content={[content[2], content[3]]} /></Slide>
-                <Slide ref={(ref) => this.resources = ref} name="resources" height="510" color="white"><TileBoard content={content[4].tileBoard}/></Slide>
-                <Slide ref={(ref) => this.roadmap = ref} name="roadmap" height="520" color="white"><ImageView content={content[5]}/></Slide>
-                <Slide ref={(ref) => this.community = ref} name="community" height="520" color="white"><Hero title={content[1].title} body={content[1].body}/></Slide>
-                <Slide ref={(ref) => this.faq = ref} name="faq" height="473" color="white"><FaqList content ={content[6]}/></Slide>
+                {
+                    Object.keys(contentMap).map((slideName, i) => {
+                        return <Slide key={i} ref={(ref) => this[slideName] = ref} name={slideName} height="520" color="white">
+                            <DynamicSlide slideName={slideName} contentMap={contentMap}/>
+                        </Slide>
+                    })
+                }
+
             </MainView>
         );
     }

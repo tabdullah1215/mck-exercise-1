@@ -54,10 +54,11 @@ const Grid = (props) => {
         }
     `;
 
+    const {content} = props.contentMap;
     return(
         <MainView isTileMode={props.isTileMode}>
             <Row isTileMode={props.isTileMode}>
-                {props.content.map((item, i) => {
+                {content.map((item, i) => {
                     return <Column key={i} isTileMode={props.isTileMode} xs="12" sm="6" md="6" lg="6">
                         <Cell isTileMode={props.isTileMode} title={item.title} body={item.body} links={item.links}
                               inverted={(i%2 !== 0 && !props.isTileMode) || (props.index%2 !== 0 && props.isTileMode)} />

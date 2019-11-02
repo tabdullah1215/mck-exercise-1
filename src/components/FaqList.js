@@ -77,7 +77,8 @@ class FaqList extends Component {
 
     render() {
         const { height } = this.state;
-        const { content } = this.props.content.faqs;
+        const { content } = this.props.contentMap;
+
         return (
             <MainView>
                 <ListContainer>
