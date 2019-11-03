@@ -1,14 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
+import {device} from '../constants';
 
 const Title = (props) => {
     const MainView = styled.div`
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: auto;
+        @media ${device.mobileS} {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: auto;
+        }
         `;
     const Heading = styled.div`
         width: auto;

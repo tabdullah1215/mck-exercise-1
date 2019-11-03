@@ -1,6 +1,7 @@
 import React, {memo} from 'react';
 import styled from 'styled-components';
 import Title from './Title';
+import {device} from '../constants';
 
 
 const ImageView = memo((props) => {
@@ -14,7 +15,6 @@ const ImageView = memo((props) => {
         align-items: center;
         overflow: hidden;
         box-sizing: border-box;
-       
         color: #ffffff;
     `;
     const ImageContainer = styled.div`
@@ -24,11 +24,24 @@ const ImageView = memo((props) => {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        padding: 20px 0;
         background-image: linear-gradient(to right, #051C2C, darkblue);
     `;
-    const Image = styled.img`
-        max-height: 55%;
-        margin-top: 30px;
+    const ImageDesktop = styled.img`
+            display: none;
+        @media ${device.laptopL} {
+            display: inline;
+            max-height: 45%;
+            margin-top: 30px;
+        }
+    `;
+    const ImageMobile = styled.img`
+            display: inline;
+            max-width: 45%;
+            margin-top: 30px;
+        @media ${device.laptopL} {
+            display: none;
+        }
     `;
 
     const {content} = props.contentMap;
@@ -37,7 +50,8 @@ const ImageView = memo((props) => {
         <MainView>
             <ImageContainer>
                 <Title heading={title.heading} subheading={title.subheading} inverted={true}/>
-                <Image src={info}/>
+                <ImageDesktop src={info.desktop}/>
+                <ImageMobile src={info.mobile} />
             </ImageContainer>
         </MainView>
     );

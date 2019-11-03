@@ -141,7 +141,10 @@ const contentMap =
                     subheading: `Our team is actively working on creating an entirely new set of guidelines
                 to replace our previous UIG. Our new design system will provide both an exhaustive set of components for designers to create and a robust set of technologies for developers to build.`
                 },
-                info: 'Roadmap-Desktop.png'
+                info: {
+                    desktop: 'Roadmap-Desktop.png',
+                    mobile: 'Roadmap-mobile.png'
+                }
             }
         },
         community: {

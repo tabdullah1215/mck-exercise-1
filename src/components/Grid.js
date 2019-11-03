@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import Cell from './Cell';
+import {device} from '../constants';
 
 const Grid = (props) => {
     const getWidthString = (span) => {
@@ -16,7 +17,10 @@ const Grid = (props) => {
         align-items: center;
         height: 100%;
         ${({isTileMode}) => isTileMode && `max-width: 50%;` }
-        ${({isTileMode}) => isTileMode && `padding 0 5px;` }
+        ${({isTileMode}) => isTileMode && `padding 0 2px;` }
+        @media ${device.tablet} {
+            ${({isTileMode}) => isTileMode && `padding 0 5px;` }
+        }
     `;
     const Row = styled.div`
         height: 100%;
@@ -24,7 +28,7 @@ const Grid = (props) => {
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        ${({isTileMode}) => isTileMode && `flex-wrap: wrap` };
+        flex-wrap: wrap;
         &::after {
             content: "";
             clear: both;
@@ -59,7 +63,7 @@ const Grid = (props) => {
         <MainView isTileMode={props.isTileMode}>
             <Row isTileMode={props.isTileMode}>
                 {content.map((item, i) => {
-                    return <Column key={i} isTileMode={props.isTileMode} xs="12" sm="6" md="6" lg="6">
+                    return <Column key={i} isTileMode={props.isTileMode} xs={props.isTileMode ? 12 : 6} sm="6" md="6" lg="6">
                         <Cell isTileMode={props.isTileMode} title={item.title} body={item.body} links={item.links}
                               inverted={(i%2 !== 0 && !props.isTileMode) || (props.index%2 !== 0 && props.isTileMode)} />
                     </Column>

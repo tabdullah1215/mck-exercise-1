@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import AnimateHeight from 'react-animate-height';
+import {device} from '../constants';
 
 const MainView = styled.div`
     width: 100%;
     height: 100%;
-    background-color: #F0F0F0;
+    background-color: #979797;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 20px 0;
 `;
 
 const ListContainer = styled.div`
@@ -27,13 +29,16 @@ const Question = styled.div`
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 20px 20px;
+    padding: 20px 0;
     font-weight: bold;
     text-align: center;
     font-size: 18px;
     font-family: "TheinhardtPan-Medium";
     &:hover {
         cursor: pointer;
+    }
+    @media ${device.tablet} {
+        padding: 20px 20px;
     }
 `;
 
@@ -47,10 +52,13 @@ const Answer = styled.div`
 `;
 
 const Image = styled.img`
-    height: 1.5em;
-    width: 1.5em;
-    display: flex;
-    self-align: left;
+    display: none;
+    @media ${device.laptopL} {
+        height: 1.5em;
+        width: 1.5em;
+        display: flex;
+        self-align: left;
+    }
 `;
 
 const SideMargin = styled.div`
@@ -60,6 +68,20 @@ const SideMargin = styled.div`
 const ContentContainer = styled.div`
     width: 80%;
     `;
+
+const AlwaysShowInMobile = styled.div`
+    display: block;
+    @media ${device.laptopL} {
+        display: none;
+    }
+`;
+
+const AlwaysShowInDesktop = styled.div`
+    display: none;
+    @media ${device.laptopL} {
+        display: block;
+    }
+`;
 
 class FaqList extends Component {
     state = {
@@ -94,14 +116,22 @@ class FaqList extends Component {
                                     </ContentContainer>
                                     <SideMargin/>
                                 </Question>
-                                <AnimateHeight
-                                    duration={500}
-                                    height={!height[i] ? 0 : height[i]}
-                                >
+                                <AlwaysShowInDesktop>
+                                    <AnimateHeight
+                                        duration={500}
+                                        height={!height[i] ? 0 : height[i]}
+                                    >
+                                        <Answer>
+                                            {faq.answer}
+                                        </Answer>
+                                    </AnimateHeight>
+                                </AlwaysShowInDesktop>
+                                <AlwaysShowInMobile>
                                     <Answer>
                                         {faq.answer}
                                     </Answer>
-                                </AnimateHeight>
+                                </AlwaysShowInMobile>
+
                             </Faq>
                         })
                     }

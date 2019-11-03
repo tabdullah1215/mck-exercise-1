@@ -21,7 +21,7 @@ const TileBoard = (props) => {
     const {info, title} = content;
     return(
         <MainView>
-            <Title heading={title.heading} subheading={title.subheading}/>
+            <Title heading={title.heading} subheading={title.subheading} isTileMode={true}/>
             <Grids>
                 {
                     info.map((grids, i) => {
