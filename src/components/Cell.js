@@ -35,7 +35,7 @@ const Cell = (props) => {
         ${({inverted}) => inverted ? `color: #ffffff` : `color: #000000` };
         
         @media ${device.tablet} {
-            ${({isTileMode}) => (isTileMode ? `font-size: 23px;` : `font-size: 54px;`) };
+            ${({isTileMode}) => (isTileMode ? `font-size: 23px;` : `font-size: 45px;`) };
         }
         @media ${device.laptop} {     
             ${({isTileMode}) => (isTileMode ? `width: 100%;` : `width: 60%;`) };

@@ -12,10 +12,10 @@ const Hero = (props) => {
         height: 100%;
         box-sizing: border-box;
         padding-left: 35px;
-        padding-top: 15px;
+        padding-top: 0;
         @media ${device.tablet} {
             padding-left: 70px;
-            padding-top: 28px;
+            padding-top: 0;
         }
         @media ${device.laptop} {
             padding-left: 100px;

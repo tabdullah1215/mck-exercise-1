@@ -15,6 +15,7 @@ const NavBar = ({activeItem, setActiveItem, paddingTop}) => {
         text-decoration: none;
         font-size: 17px;
         color: black;
+        margin-left: 10px;
         font-family: "TheinhardtPan-Light";
         &:hover {
         color: #1F40E6;
