@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Sticky from 'react-sticky-el';
 import Slide from './Slide';
 import Header from "./Header";
-import navItems, {headerStyles} from '../constants';
+import {headerStyles} from '../constants';
 import DynamicSlide from './DynamicSlide';
 import PropTypes from 'prop-types';
 
@@ -29,13 +29,15 @@ class SlideViewer extends React.Component {
     }
 
     getClosestInViewRef = () => {
+        const {contentMap} = this.props;
+        const navItems = Object.keys(contentMap);
         let headerHeight = this.header && this.header.getBoundingClientRect().height;
         let mainHeight = this.main && this.main.getBoundingClientRect().height;
         return navItems.reduce((acc, item) => {
-            let itemTop = this[item.name] && this[item.name].getBoundingClientRect().top;
+            let itemTop = this[item] && this[item].getBoundingClientRect().top;
             if(itemTop > headerHeight - 20 &&
                 itemTop < acc.posY) {
-                return {name: item.name, posY: itemTop};
+                return {name: item, posY: itemTop};
             }
             return acc;
         }, {name: 'main', posY: this.main && mainHeight});
@@ -70,6 +72,7 @@ class SlideViewer extends React.Component {
     render() {
         const {activeItem, shrink} = this.state;
         const {contentMap} = this.props;
+        const navItems = Object.keys(contentMap);
         return (
             <MainView id="main" className="main" onScroll={this.handleScroll} ref={(ref) => this.main = ref}>
                 <Sticky scrollElement=".main">
@@ -79,10 +82,11 @@ class SlideViewer extends React.Component {
                             setActiveItem={this.setActiveItem}
                             headerStyles={headerStyles}
                             shrink={shrink}
+                            navItems={navItems}
                     />
                 </Sticky>
                 {
-                    Object.keys(contentMap).map((slideName, i) => {
+                    navItems.map((slideName, i) => {
                         return <Slide key={i} ref={(ref) => this[slideName] = ref} name={slideName} height="520" color="white">
                             <DynamicSlide slideName={slideName} contentMap={contentMap}/>
                         </Slide>

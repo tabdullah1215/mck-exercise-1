@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import navItems from '../constants';
 import PropTypes from 'prop-types';
 
-const NavBar = ({activeItem, setActiveItem, paddingTop}) => {
+const NavBar = ({activeItem, setActiveItem, paddingTop, navItems}) => {
     const MainNav = styled.div`
         overflow: hidden;
         padding-top: ${paddingTop}px;
@@ -32,14 +31,14 @@ const NavBar = ({activeItem, setActiveItem, paddingTop}) => {
     return(
         <MainNav>
             {
-                navItems.filter(item => item.name !== 'intro').map((item, i) => {
-                    let activeState = activeItem === item.name;
+                navItems.filter(item => item !== 'intro').map((item, i) => {
+                    let activeState = activeItem === item;
                     return <NavItem
                         key={i}
                         style={{color: activeState ? '#1F40E6' : '#000000'}}
-                        href={`#${item.name}`}
-                        onClick={() => setTimeout(() => setActiveItem(item.name), 500)}>
-                        {item.heading}
+                        href={`#${item}`}
+                        onClick={() => setTimeout(() => setActiveItem(item), 500)}>
+                        {item[0].toUpperCase() + item.slice(1)}
                         {activeState && <Bar />}
                     </NavItem>;
                 })

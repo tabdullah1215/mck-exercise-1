@@ -7,7 +7,7 @@ import {Spring} from 'react-spring/renderprops';
 import {device} from '../constants';
 import PropTypes from 'prop-types';
 
-const Header = React.forwardRef(({activeItem, setActiveItem, headerStyles, shrink}, ref) => {
+const Header = React.forwardRef(({activeItem, setActiveItem, headerStyles, shrink, navItems}, ref) => {
 
     const { paddingTop, height, navPadding, picHeight, picWidth, shadowColor} = shrink ? headerStyles.shrunk : headerStyles.initial;
 
@@ -96,7 +96,7 @@ const Header = React.forwardRef(({activeItem, setActiveItem, headerStyles, shrin
                             <LogoContainer>
                                 <Image style={{width: props.picWidth, height: props.picHeight}} src="McK_ScriptMark_RGB_McKDeepBlue.png" alt="McKinsey & Company"/>
                             </LogoContainer>
-                            <NavBar activeItem={activeItem} setActiveItem={setActiveItem} paddingTop={props.navPadding}/>
+                            <NavBar navItems={navItems} activeItem={activeItem} setActiveItem={setActiveItem} paddingTop={props.navPadding}/>
                         </MainView>
                     </DesktopContainer>
                     <MobileContainer>

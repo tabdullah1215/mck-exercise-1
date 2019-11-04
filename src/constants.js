@@ -1,12 +1,3 @@
-const navItems = [
-    { heading: 'Intro', name: 'intro'},
-    {heading: 'Overview', name: 'overview'},
-    {heading: 'Resources', name: 'resources'},
-    {heading: 'Roadmap', name: 'roadmap'},
-    {heading: 'Community', name: 'community'},
-    {heading: 'FAQ', name: 'faq'}
-];
-
 const headerStyles = {
     shrunk: {
         height: 65,
@@ -60,8 +51,6 @@ const cellHeight = {
         laptop: 440,
         laptopL: 440
     }
-}
+};
 
-
-export default navItems;
 export { headerStyles, device, cellHeight };
