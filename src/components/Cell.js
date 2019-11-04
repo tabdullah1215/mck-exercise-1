@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import {device, cellHeight} from '../constants';
+import PropTypes from "prop-types";
 
 const Cell = (props) => {
 
@@ -115,3 +116,11 @@ const Cell = (props) => {
 };
 
 export default Cell;
+
+Cell.propTypes = {
+    isTileMode: PropTypes.bool,
+    inverted: PropTypes.bool,
+    title: PropTypes.string.isRequired,
+    body: PropTypes.arrayOf(PropTypes.string).isRequired,
+    links: PropTypes.arrayOf(PropTypes.string).isRequired
+};

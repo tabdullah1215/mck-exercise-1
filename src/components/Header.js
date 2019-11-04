@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import {animated} from 'react-spring';
 import {Spring} from 'react-spring/renderprops';
 import {device} from '../constants';
+import PropTypes from 'prop-types';
 
 const Header = React.forwardRef(({activeItem, setActiveItem, headerStyles, shrink}, ref) => {
 
@@ -116,3 +117,10 @@ const Header = React.forwardRef(({activeItem, setActiveItem, headerStyles, shrin
 });
 
 export default Header;
+
+Header.propTypes = {
+    activeItem: PropTypes.string.isRequired,
+    setActiveItem: PropTypes.func.isRequired,
+    headerStyles: PropTypes.object.isRequired,
+    shrink: PropTypes.bool.isRequired
+};

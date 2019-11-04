@@ -5,6 +5,7 @@ import Slide from './Slide';
 import Header from "./Header";
 import navItems, {headerStyles} from '../constants';
 import DynamicSlide from './DynamicSlide';
+import PropTypes from 'prop-types';
 
 const MainView = styled.div`
         height: 100%;
@@ -94,3 +95,7 @@ class SlideViewer extends React.Component {
 }
 
 export default SlideViewer;
+
+SlideViewer.propTypes = {
+    contentMap: PropTypes.objectOf(PropTypes.object).isRequired
+};

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import navItems from '../constants';
+import PropTypes from 'prop-types';
 
 const NavBar = ({activeItem, setActiveItem, paddingTop}) => {
     const MainNav = styled.div`
@@ -48,3 +49,9 @@ const NavBar = ({activeItem, setActiveItem, paddingTop}) => {
 };
 
 export default NavBar;
+
+NavBar.propTypes = {
+    activeItem: PropTypes.string.isRequired,
+    setActiveItem: PropTypes.func.isRequired,
+    paddingTop: PropTypes.number.isRequired
+};

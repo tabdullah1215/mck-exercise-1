@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import AnimateHeight from 'react-animate-height';
 import {device} from '../constants';
+import PropTypes from "prop-types";
 
 const MainView = styled.div`
     width: 100%;
@@ -142,3 +143,14 @@ class FaqList extends Component {
 }
 
 export default FaqList;
+
+FaqList.propTypes = {
+    contentMap: PropTypes.shape({
+        content: PropTypes.arrayOf(
+            PropTypes.shape({
+                question: PropTypes.string.isRequired,
+                answer: PropTypes.string.isRequired
+            })
+        )
+    })
+};

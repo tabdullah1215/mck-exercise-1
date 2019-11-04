@@ -2,7 +2,7 @@ import React, {memo} from 'react';
 import styled from 'styled-components';
 import Title from './Title';
 import {device} from '../constants';
-
+import PropTypes from "prop-types";
 
 const ImageView = memo((props) => {
     const MainView = styled.div`
@@ -58,3 +58,18 @@ const ImageView = memo((props) => {
 }, () => true);
 
 export default ImageView;
+
+ImageView.propTypes = {
+    contentMap: PropTypes.shape({
+        content: PropTypes.shape({
+            title: PropTypes.shape({
+                heading: PropTypes.string.isRequired,
+                subheading: PropTypes.string.isRequired
+            }),
+            info: PropTypes.shape({
+                desktop: PropTypes.string.isRequired,
+                mobile: PropTypes.string.isRequired
+            })
+        })
+    })
+};

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {device} from '../constants';
+import PropTypes from 'prop-types';
 
 const Slide = React.forwardRef(({height, color, name, ...props}, ref) => {
 
@@ -22,3 +23,10 @@ const Slide = React.forwardRef(({height, color, name, ...props}, ref) => {
 });
 
 export default Slide;
+
+Slide.propTypes = {
+    height: PropTypes.string.isRequired,
+    color: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    children: PropTypes.element.isRequired
+};

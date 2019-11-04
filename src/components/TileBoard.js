@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Grid from './Grid';
 import Title from './Title';
+import PropTypes from 'prop-types';
 
 const TileBoard = (props) => {
     const MainView = styled.div`
@@ -21,11 +22,11 @@ const TileBoard = (props) => {
     const {info, title} = content;
     return(
         <MainView>
-            <Title heading={title.heading} subheading={title.subheading} isTileMode={true}/>
+            <Title heading={title.heading} subheading={title.subheading} isTileMode={true} />
             <Grids>
                 {
-                    info.map((grids, i) => {
-                        return <Grid key={i} index={i} isTileMode={true} contentMap={grids}/>
+                    info.map((cells, i) => {
+                        return <Grid key={i} index={i} isTileMode={true} contentMap={cells}/>
                     })
                 }
             </Grids>
@@ -34,3 +35,15 @@ const TileBoard = (props) => {
 };
 
 export default TileBoard;
+
+TileBoard.propTypes = {
+    contentMap: PropTypes.shape({
+        content: PropTypes.shape({
+            title: PropTypes.shape({
+                heading: PropTypes.string.isRequired,
+                subheading: PropTypes.string.isRequired
+            }),
+            info: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any.isRequired))
+        })
+    })
+};

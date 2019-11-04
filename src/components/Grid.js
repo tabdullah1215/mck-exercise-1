@@ -2,6 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import Cell from './Cell';
 import {device} from '../constants';
+import PropTypes from "prop-types";
 
 const Grid = (props) => {
     const getWidthString = (span) => {
@@ -75,3 +76,15 @@ const Grid = (props) => {
 };
 
 export default Grid;
+
+Grid.propTypes = {
+    contentMap: PropTypes.shape({
+        content: PropTypes.arrayOf(
+            PropTypes.shape({
+                title: PropTypes.string.isRequired,
+                body: PropTypes.arrayOf(PropTypes.string).isRequired,
+                links: PropTypes.arrayOf(PropTypes.string).isRequired
+            })
+        )
+    })
+};

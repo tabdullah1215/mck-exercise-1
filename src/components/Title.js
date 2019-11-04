@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {device} from '../constants';
+import PropTypes from 'prop-types';
 
 const Title = (props) => {
     const MainView = styled.div`
@@ -41,3 +42,9 @@ const Title = (props) => {
 };
 
 export default Title;
+
+Title.propTypes = {
+    inverted: PropTypes.bool,
+    heading: PropTypes.string.isRequired,
+    subheading: PropTypes.string.isRequired
+};

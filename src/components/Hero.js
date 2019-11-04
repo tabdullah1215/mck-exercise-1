@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import {device} from '../constants';
+import PropTypes from 'prop-types';
 
 const ContentView = styled.div`
         display: flex;
@@ -19,11 +20,10 @@ const ContentView = styled.div`
             padding-left: 100px;
             padding-top: 40px;
         }
-        
     `;
 const MediaView = styled.div`
     width: 40%;
-    padding: 0 20px 30px 20px;
+    padding: 20px 20px 30px 20px;
 `;
 
 const MainView = styled.div`
@@ -67,14 +67,11 @@ const Paragraph = styled.p`
     `;
 
 const Image = styled.img`
-        width: 100%;
-        height: 100%;
+        width: 90%;
+        height: 90%;
     `;
 
 class Hero extends React.Component {
-    constructor(props){
-        super(props);
-    }
 
     render() {
         const {title, body, media} = this.props.contentMap.content;
@@ -104,3 +101,13 @@ class Hero extends React.Component {
 }
 
 export default Hero;
+
+Hero.propTypes = {
+    contentMap: PropTypes.shape({
+        content: PropTypes.shape({
+            title: PropTypes.string.isRequired,
+            body: PropTypes.arrayOf(PropTypes.string).isRequired,
+            media: PropTypes.string.isRequired
+        })
+    })
+};
