@@ -52,7 +52,7 @@ const cellHeight = {
         mobileS: 200,
         tablet: 250,
         laptop: 250,
-        laptopL: 150
+        laptopL: 200
     },
     gridMode: {
         mobileS: 385,
