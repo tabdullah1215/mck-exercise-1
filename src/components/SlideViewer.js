@@ -13,6 +13,12 @@ const MainView = styled.div`
         overflow: auto;
     `;
 
+/*
+    this component is main viewing container and serves as
+     the layout engine that binds the header to the top
+     of the container, then scaffolds the content into the
+     slide wrappers that use dynamic loader to determine the required views
+ */
 class SlideViewer extends React.Component {
     constructor(props) {
         super(props);
@@ -27,7 +33,10 @@ class SlideViewer extends React.Component {
     componentWillUnmount(){
         clearTimeout(this._timeout);
     }
-
+    /*
+        determines and returns the closest slide to the header after a manual scroll to update
+        active status and move the menu bar accordingly
+    */
     getClosestInViewRef = () => {
         const {contentMap} = this.props;
         const navItems = Object.keys(contentMap);
@@ -42,7 +51,11 @@ class SlideViewer extends React.Component {
             return acc;
         }, {name: 'main', posY: this.main && mainHeight});
     };
-
+    /*
+        handles scroll events, both manual scroll and scrollintoview,
+        updates state with the current in-view slide and triggers animated shrinking of header
+        uses debounce (throttling) to limit setting of state to every 500ms
+    */
     handleScroll = (event) => {
         event.preventDefault();
         const closestRef = this.getClosestInViewRef().name;
@@ -63,7 +76,9 @@ class SlideViewer extends React.Component {
             });
         }
     };
-
+    /*
+        maps the active item to the appropriate slide ref and slides it into view
+    */
     setActiveItem = (activeItem) => {
         //scrolling the ref triggers the onScroll event which adds the selected item into state
         this[activeItem].scrollIntoView({block: 'end', behavior: 'smooth'});

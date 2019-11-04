@@ -36,7 +36,7 @@ const Header = React.forwardRef(({activeItem, setActiveItem, headerStyles, shrin
 
     const DesktopContainer = styled.div`
         display: none;
-        @media ${device.laptop} {
+        @media ${device.laptopL} {
             display: block;
         }
     `;
@@ -46,7 +46,7 @@ const Header = React.forwardRef(({activeItem, setActiveItem, headerStyles, shrin
         width: 30px;
         height: 30px;
         align-self: center;
-        @media ${device.laptop} {
+        @media ${device.laptopL} {
             display: none;
         }
         &:hover {
@@ -62,7 +62,7 @@ const Header = React.forwardRef(({activeItem, setActiveItem, headerStyles, shrin
         align-items: flex-start;
         font-family: "TheinhardtPan-Regular";
         font-size: 16px;
-        @media ${device.laptop} {
+        @media ${device.laptopL} {
             display: none;
         }
     `

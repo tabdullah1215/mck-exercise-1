@@ -1,68 +1,46 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Simple Design System:
 
-## Available Scripts
+This exercise demonstrates the use of the following tools, concepts to create
+a simple design system:
 
-In the project directory, you can run:
+### Styled Components
+Styled components are used in this exercise to leverage desirable features such as:
+`encapsulation of design, logic and UI into one module`, `use of css with the added power of dynamic styling`,
+`property functions and conditional logic`
+These components are completely content-agnostic, and are decoupled from the content completely.  They receive their
+content strictly by passing through properties.
 
-### `yarn start`
+### Slide Paradigm
+This exercise was designed with the slide paradigm in mind.  The Slide user experience leverages the scrolling navigation feature
+of the Navbar to present each view to the user in an immersive and focused way, hence the term `slide`.  Therefore,
+all views have a uniform height and fit the view window without content overflow, as would be expected of a slide.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### SlideViewer and DynamicSlide
+The `SlideViewer` and `DynamicSlide` components are the heart of this web app.  These 2 components are the only `smart` components 
+in this project.  The SlideViewer `scaffolds` the content from the content file, and passes it through to the Slide component, 
+which is a wrapper that gets `loaded` with the required design component. 
+The DynamicSlide generator `loads` the needed design component on the fly as dictated by the content file.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Content Driven Design & Content Mapping
+This exercise implements a `top-down` design, where the flow starts from the `top` with the content file
+and scaffolds the content `down` into the components.
+The content file is NOT just a way to avoid hard-coding content inside the components, it also acts as an implicit configuration file.  
+The shape and structure of the data objects inside the content file dictate the size, breadth, depth, composition and 
+layout of the web site.
+ 
+### PropTypes
+Implementing proptypes is a necessary first step to ensuring a robust content mapping system.
+Proptypes offers the first layer of validation to indicate that the content will properly scaffold out into the components.
+Subsequent layers of validation can be integrated to check at run-time and inform the user that the content file is malformed.
 
-### `yarn test`
+### Data Definition Document (to-do)
+In theory, this content-driven application would be deployed along with a data definition document.
+This document would define the shape and props of the data objects which would enable a non-technical 
+`superuser` to author content files and swap them out.  Effectively speaking this would enable
+users to launch new sites with minimal intervention from developers and designers.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Reusable Websites
+The ultimate objective would be to create robust, intelligent design components, along with smart, 
+scalable content mapping in a way that would enable re-usability of web sites not just components.
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

@@ -5,6 +5,10 @@ import TileBoard from "./TileBoard";
 import ImageView from "./ImageView";
 import FaqList from "./FaqList";
 
+/*
+this component dynamically determines the view to load into the slide wrapper
+and adds content as props
+ */
 const DynamicSlide = ({slideName, contentMap}) => {
     const getSlide = (name) => {
         switch(contentMap[name].component) {
